@@ -1,0 +1,12 @@
+compile:
+	@echo "Nothing to compile for stress-ng memory"
+	
+measure:
+	sudo modprobe msr
+	sudo ../../RAPL/main "stress-ng --class memory --all 1 --timeout 20s" stress-ng memory 
+
+run:
+	stress-ng --class memory --all 1 --timeout 20s
+
+mem:
+	/usr/bin/time -v stress-ng --class --all 1 memory --timeout 20s
